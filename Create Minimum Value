@@ -1,0 +1,50 @@
+import java.util.*;
+
+class Solution
+{
+    public int solution(int []A, int []B)
+    {
+        int answer = 0;
+        ArrayList<Integer>arrA=new ArrayList<Integer>();
+        ArrayList<Integer> arrB=new ArrayList<Integer>();
+        for(int i=0;i<A.length;i++){
+            arrA.add(i,A[i]);
+        }
+        for(int j=0;j<B.length;j++){
+            arrB.add(j,B[j]);
+        }
+        Collections.sort(arrA);
+        Collections.sort(arrB);
+        for(int k=A.length-1;k>=0;k--){
+        /*int minA=arrA.get(0);
+        int maxA=arrA.get(k);
+        int minB=arrB.get(0);
+        int maxB=arrB.get(k);*/
+        if((arrA.get(0)*arrB.get(k))>(arrB.get(0)*arrA.get(k)))
+        {
+            answer+=(arrB.get(0)*arrA.get(k));
+             arrA.remove(k);
+            arrB.remove(0);
+        }
+        else if((arrA.get(0)*arrB.get(k))<=(arrB.get(0)*arrA.get(k)))
+        {
+            answer+=(arrA.get(0)*arrB.get(k));
+            arrA.remove(0);
+            arrB.remove(k);
+        }
+        /*if((minA*maxB)>(minB*maxA))
+        {
+            arrA.remove(k);
+            arrB.remove(0);
+            answer+=(minB*maxA);
+        }
+        else if((minA*maxB)<=(minB*maxA))
+        {
+            arrA.remove(0);
+            arrB.remove(k);
+            answer+=(minA*maxB);
+        }*/
+        }
+        return answer;
+    }
+}
