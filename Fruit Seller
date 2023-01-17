@@ -1,0 +1,25 @@
+import java.util.PriorityQueue;
+
+class Solution {
+    //정렬을 먼저 하고 돌리는 방식으로
+    public int solution(int k, int m, int[] score) {
+        int answer = 0;
+        //오름차순으로 정렬 같은 수가 있는 경우는 어쩌지?
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>();
+		for(int i = 0; i < score.length; i++) {
+			heap.add(score[i]);
+		}
+		for(int i = 0; i < score.length; i++) {
+			score[i] = heap.poll();
+		}
+        
+        int p = score.length-m;
+        answer = score[p]*m;
+        while(p>=m) {
+            p = p-m;
+            answer += score[p]*m;
+            //박스 여러 개일 경우 처리
+        }
+        return answer;
+    }
+}
