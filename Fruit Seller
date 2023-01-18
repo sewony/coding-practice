@@ -14,7 +14,12 @@ class Solution {
 		}
         
         int p = score.length-m;
+        if(score.length<=m) {
+            answer=0;
+        }
+        else {
         answer = score[p]*m;
+        }
         while(p>=m) {
             p = p-m;
             answer += score[p]*m;
