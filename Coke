@@ -1,0 +1,24 @@
+class Solution {
+    public int solution(int a, int b, int n) {
+        int answer = 0;
+        int remainder = 0;
+        try{
+            while(n>=(a/b)){
+                if(n%(a/b) == 0){
+                    answer += (n/(a/b));
+                    n = n/(a/b); //n 갱신
+                }
+                else{
+                    answer += (n/(a/b));
+                    remainder += n%(a/b);
+                    n = (n/(a/b));
+                }
+            }
+            answer += (remainder+n)/(a/b);
+        }
+        catch(ArithmeticException e){
+            System.out.println("0으로 나눌 수 없습니다.");
+        }
+        return answer;
+    }
+}
