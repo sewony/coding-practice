@@ -1,0 +1,32 @@
+import java.util.*;
+class Solution {
+    public int[] solution(int k, int[] score) {
+        int[] answer = new int[score.length];//score 배열과 똑같은 크기의 answer 배열 생성
+        int[] kArr = new int[k];
+        
+        answer[0] = score[0];
+        for (int j=0;j<k; j++){
+            kArr[j] = score[0];
+        }
+        
+        for (int i=1; i<score.length; i++) {
+            Arrays.sort(kArr);
+            if(i<=k-1) {
+                kArr[i] = score[i];
+                Arrays.sort(kArr);//kArr 오름차순 정렬
+                answer[i] = kArr[0]; //최하값을 answer에 저장
+            }
+            else if(i>k-1) {
+                if(kArr[0] >=score[i]) {//kArr 중 최하값이랑 score값 비교
+                    answer[i] = kArr[0];
+                }
+                else if(kArr[0]<score[i]) {
+                    kArr[0] = score[i]; //마지막에 score[i]값 넣기
+                    Arrays.sort(kArr);//다시 오름차순 정리
+                    answer[i] = kArr[0];
+                }
+            }
+        }
+        return answer;
+    }
+}
