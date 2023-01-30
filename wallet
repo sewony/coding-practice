@@ -1,0 +1,31 @@
+import java.util.*;
+class Solution {
+    public int solution(int[][] sizes) {
+        int answer = 0;
+        
+        int[] seros = new int[sizes.length];
+        int[] garos = new int[sizes.length];
+        
+        int sero = 0;
+        int garo = 0;
+        
+        for (int i=0 ; i<sizes.length; i++) { //행의 갯수 
+            seros[i] = sizes[i][0];
+            Arrays.sort(seros);
+            sero = seros[seros.length-1];
+            
+            garos[i] = sizes[i][1];
+            Arrays.sort(garos);
+            garo = garos[garos.length-1];
+        }
+        
+        if(garo>sero) {
+            //sero의 짝이 garo의 짝보다 작으면 두번째로 작은 sero로 대체해서 answer로 return하기
+        }
+        else if(sero>garo) {
+            //garo의 짝이 sero의 짝보다 작으면 두번째로 작은 garo로 대체해서 answer로 return하기
+        }
+        answer= sero*garo;
+        return answer;
+    }
+}
