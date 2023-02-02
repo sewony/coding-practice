@@ -1,0 +1,11 @@
+import java.util.*;
+class Solution {
+    public String solution(String my_string) {
+        String answer="";
+        my_string = my_string.toLowerCase(); //전부 소문자로 변환
+        char[] charString = my_string.toCharArray();
+        Arrays.sort(charString);
+        answer = new String(charString);
+        return answer;
+    }
+}
