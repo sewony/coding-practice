@@ -1,0 +1,14 @@
+import java.util.*;
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        String [] numbersStr = s.split(" ");
+        int [] numbersInt = new int[numbersStr.length];
+        for ( int i=0; i<numbersStr.length; i++) {
+            numbersInt[i] = Integer.parseInt(numbersStr[i]);
+        }
+        Arrays.sort(numbersInt);
+        answer = Integer.toString(numbersInt[0]) + " " + Integer.toString(numbersInt[numbersInt.length-1]);
+        return answer;
+    }
+}
