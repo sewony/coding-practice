@@ -1,0 +1,22 @@
+class Solution {
+    public boolean solution(int x) {
+        boolean answer = true;
+        int sum = 0;
+        int x_2 = x;
+        
+        while(x_2>1) {
+            sum+= x_2%10;
+            x_2 = x_2/10;
+            sum+=x_2;
+        }
+        
+        
+        if(x%sum==0) {
+            answer = true;
+        }
+        else if(x%sum!=0) {
+            answer = false;
+        }
+        return answer;
+    }
+}
