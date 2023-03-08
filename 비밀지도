@@ -1,0 +1,30 @@
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        String[][] answertmp = new String[n][n];
+        String[] arr1tmp = new String[n];
+        String[] arr2tmp = new String[n];
+        int[][] arr1int = new int[n][n];
+        int[][] arr2int = new int[n][n];
+        
+        for (int i=0 ; i<n ; i++) { //십진수를 이진수로 변경, 0으로 자릿수 채우기
+            arr1tmp[i] = String.format("%0"+n+"d", Integer.parseInt(Integer.toBinaryString(arr1[i])));
+            arr2tmp[i] = String.format("%0"+n+"d", Integer.parseInt(Integer.toBinaryString(arr2[i])));
+            
+            for(int k=0; k<n; k++) {
+                arr1int[i][k] = arr1tmp[i].charAt(k)-'0';
+                arr2int[i][k] = arr2tmp[i].charAt(k)-'0';
+                
+                if(arr1int[i][k]==0 && arr2int[i][k]==0) {
+                    answertmp[i][k] = " ";
+                }
+                else {
+                    answertmp[i][k] = "#";
+                }
+                answer[i] = String.join("", answertmp[i]);
+            }
+        }
+        
+        return answer;
+    }
+}
