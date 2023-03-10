@@ -1,0 +1,19 @@
+import java.util.*;
+class Solution {
+    public String solution(int[] food) {
+        String answer = "";
+        //앞 절반 만들고 + 0 +앞 절반을 내림차순으로 정리해서 붙이기
+        for( int i=1 ; i<food.length ; i++) {
+            for(int j=0 ; j<food[i]/2 ; j++) {//절반을 앞에 붙임
+                answer+=i;
+            }
+        }
+
+        StringBuffer sb = new StringBuffer(answer);
+        answer+=0;
+        answer += sb.reverse().toString();
+        
+        System.out.println(answer);
+        return answer;
+    }
+}
